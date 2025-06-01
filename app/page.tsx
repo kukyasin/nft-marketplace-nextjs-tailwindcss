@@ -1,197 +1,212 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Search, TrendingUp, Users, Zap, BarChart3, ShoppingCart } from "lucide-react"
+import { Search, TrendingUp, TrendingDown, Star, Play, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 
 export default function LandingPage() {
-  const [viewMode, setViewMode] = useState<"grid" | "list">("list")
-  const [selectedItems, setSelectedItems] = useState<string[]>([])
+  const [selectedCollection, setSelectedCollection] = useState("bayc")
 
-  const collections = [
+  const featuredCollections = [
     {
-      id: "moonbirds",
-      name: "Moonbirds",
-      avatar: "/placeholder.svg?height=40&width=40",
-      floorPrice: "0.66",
-      topBid: "0.62",
-      change1d: "+21.10%",
-      change7d: "+105.57%",
-      change15m: "1.28",
-      volume1d: "184.64",
-      volume7d: "389.02",
-      owners: "5802",
-      ownerPercentage: "59%",
-      supply: "9999",
-      isPositive1d: true,
-      isPositive7d: true,
+      id: "bayc",
+      name: "Bored Ape Yacht Club",
+      verified: true,
+      floorPrice: "12.5",
+      items: "10,000",
+      volume: "8,500",
+      change: "+2.5%",
+      isPositive: true,
+      image: "/placeholder.svg?height=400&width=600",
+      avatars: [
+        "/placeholder.svg?height=60&width=60",
+        "/placeholder.svg?height=60&width=60",
+        "/placeholder.svg?height=60&width=60",
+      ],
     },
     {
-      id: "milady",
-      name: "Milady",
-      avatar: "/placeholder.svg?height=40&width=40",
-      floorPrice: "2.59",
-      topBid: "2.50",
-      change1d: "-6.00%",
-      change7d: "-11.86%",
-      change15m: "-",
-      volume1d: "91.64",
-      volume7d: "353.30",
-      owners: "5401",
-      ownerPercentage: "54%",
-      supply: "9976",
-      isPositive1d: false,
-      isPositive7d: false,
-    },
-    {
-      id: "pudgypenguins",
-      name: "PudgyPenguins",
-      avatar: "/placeholder.svg?height=40&width=40",
-      floorPrice: "9.38",
-      topBid: "9.16",
-      change1d: "-0.11%",
-      change7d: "-2.10%",
-      change15m: "-",
-      volume1d: "91.64",
-      volume7d: "636.30",
-      owners: "5128",
-      ownerPercentage: "50%",
-      supply: "8888",
-      isPositive1d: false,
-      isPositive7d: false,
-    },
-    {
-      id: "doodles",
-      name: "Doodles",
-      avatar: "/placeholder.svg?height=40&width=40",
-      floorPrice: "1.06",
-      topBid: "1.05",
-      change1d: "+1.52%",
-      change7d: "-7.47%",
-      change15m: "1.08",
-      volume1d: "75.39",
-      volume7d: "416.10",
-      owners: "4109",
-      ownerPercentage: "41%",
-      supply: "9998",
-      isPositive1d: true,
-      isPositive7d: false,
-    },
-    {
-      id: "boredape",
-      name: "BoredApeYachtClub",
-      avatar: "/placeholder.svg?height=40&width=40",
-      floorPrice: "13.41",
-      topBid: "12.72",
-      change1d: "-0.29%",
-      change7d: "+2.76%",
-      change15m: "-",
-      volume1d: "72.56",
-      volume7d: "787.06",
-      owners: "5594",
-      ownerPercentage: "56%",
-      supply: "9998",
-      isPositive1d: false,
-      isPositive7d: true,
+      id: "cryptopunks",
+      name: "CryptoPunks",
+      verified: true,
+      floorPrice: "45.2",
+      items: "10,000",
+      volume: "15,200",
+      change: "+5.8%",
+      isPositive: true,
+      image: "/placeholder.svg?height=400&width=600",
+      avatars: [
+        "/placeholder.svg?height=60&width=60",
+        "/placeholder.svg?height=60&width=60",
+        "/placeholder.svg?height=60&width=60",
+      ],
     },
     {
       id: "azuki",
       name: "Azuki",
-      avatar: "/placeholder.svg?height=40&width=40",
-      floorPrice: "2.19",
-      topBid: "2.11",
-      change1d: "-2.88%",
-      change7d: "-7.59%",
-      change15m: "-",
-      volume1d: "28.74",
-      volume7d: "190.32",
-      owners: "4250",
-      ownerPercentage: "43%",
-      supply: "10000",
-      isPositive1d: false,
-      isPositive7d: false,
+      verified: true,
+      floorPrice: "8.9",
+      items: "10,000",
+      volume: "3,400",
+      change: "-1.2%",
+      isPositive: false,
+      image: "/placeholder.svg?height=400&width=600",
+      avatars: [
+        "/placeholder.svg?height=60&width=60",
+        "/placeholder.svg?height=60&width=60",
+        "/placeholder.svg?height=60&width=60",
+      ],
     },
   ]
 
-  const cartItems = [
-    { id: "9055", price: "9.75", image: "/placeholder.svg?height=60&width=60" },
-    { id: "1242", price: "10.24", image: "/placeholder.svg?height=60&width=60" },
-    { id: "6913", price: "10.24", image: "/placeholder.svg?height=60&width=60" },
-    { id: "4009", price: "10.25", image: "/placeholder.svg?height=60&width=60" },
-  ]
-
-  const liveActivity = [
-    { time: "1s", action: "BUY NOW", price: "11.21", buyer: "878a0b" },
-    { time: "2s", action: "BUY NOW", price: "14.49", buyer: "878a0b" },
-    { time: "2m", action: "BUY FOR", price: "12.21", buyer: "878a0b" },
-    { time: "7m", action: "BUY FOR", price: "10.24", buyer: "878a0b" },
-    { time: "9m", action: "BUY FOR", price: "25.0", buyer: "marcop" },
-  ]
-
-  const testimonials = [
+  const trendingCurrencies = [
     {
-      username: "@DEBUSSY100",
-      handle: "Debussy.eth",
-      content:
-        "Just had a demo of @blur_io with @PacmanBlur ...Holy moly, this platform will put the others to shame. This is the future of NFT trading. I'm very very impressed with it.",
-      time: "8:01 PM · Aug 21, 2022",
+      name: "Hasuki",
+      symbol: "HSK",
+      price: "0.0012",
+      change: "+12.5%",
+      isPositive: true,
+      icon: "/placeholder.svg?height=32&width=32",
     },
     {
-      username: "@FNCYI",
-      handle: "Fancy",
-      content: "@blur_io is actually godly to use. Sniping before it even hits NFTnerds and gem",
-      time: "12:58 PM · Jul 9, 2022",
+      name: "OKX",
+      symbol: "OKX",
+      price: "45.67",
+      change: "+8.3%",
+      isPositive: true,
+      icon: "/placeholder.svg?height=32&width=32",
+    },
+    {
+      name: "Binance",
+      symbol: "BNB",
+      price: "312.45",
+      change: "-2.1%",
+      isPositive: false,
+      icon: "/placeholder.svg?height=32&width=32",
+    },
+    {
+      name: "Tory Inu",
+      symbol: "TORY",
+      price: "0.00034",
+      change: "+156.7%",
+      isPositive: true,
+      icon: "/placeholder.svg?height=32&width=32",
+    },
+    {
+      name: "LEMON STACK",
+      symbol: "LEMON",
+      price: "1.23",
+      change: "+45.2%",
+      isPositive: true,
+      icon: "/placeholder.svg?height=32&width=32",
+    },
+    {
+      name: "Solana",
+      symbol: "SOL",
+      price: "98.76",
+      change: "+12.8%",
+      isPositive: true,
+      icon: "/placeholder.svg?height=32&width=32",
+    },
+    {
+      name: "Polygon",
+      symbol: "MATIC",
+      price: "0.87",
+      change: "-5.4%",
+      isPositive: false,
+      icon: "/placeholder.svg?height=32&width=32",
+    },
+    {
+      name: "Avalanche",
+      symbol: "AVAX",
+      price: "23.45",
+      change: "+7.9%",
+      isPositive: true,
+      icon: "/placeholder.svg?height=32&width=32",
     },
   ]
 
-  const totalCartValue = cartItems.reduce((sum, item) => sum + Number.parseFloat(item.price), 0)
+  const featuredDrops = [
+    { name: "Doodle Punks", price: "0.08", image: "/placeholder.svg?height=200&width=200", status: "Live" },
+    { name: "Pixel Legends", price: "0.12", image: "/placeholder.svg?height=200&width=200", status: "Coming Soon" },
+    { name: "Cyber Cats", price: "0.05", image: "/placeholder.svg?height=200&width=200", status: "Live" },
+    { name: "Space Warriors", price: "0.15", image: "/placeholder.svg?height=200&width=200", status: "Sold Out" },
+  ]
+
+  const topMovers = [
+    { name: "Otaku Origins", volume: "234.5", change: "+89.2%", image: "/placeholder.svg?height=150&width=150" },
+    { name: "Anime Legends", volume: "156.8", change: "+67.4%", image: "/placeholder.svg?height=150&width=150" },
+    { name: "Pixel Art Club", volume: "98.3", change: "+45.1%", image: "/placeholder.svg?height=150&width=150" },
+    { name: "Crypto Samurai", volume: "87.6", change: "+38.9%", image: "/placeholder.svg?height=150&width=150" },
+  ]
+
+  const trendingCollections = [
+    { name: "Boki The Ape", floor: "2.34", change: "+12.5%", image: "/placeholder.svg?height=40&width=40" },
+    { name: "Doodles", floor: "1.89", change: "+8.7%", image: "/placeholder.svg?height=40&width=40" },
+    { name: "Pudgy Penguins", floor: "9.45", change: "+15.2%", image: "/placeholder.svg?height=40&width=40" },
+    { name: "Moonbirds", floor: "3.67", change: "+6.8%", image: "/placeholder.svg?height=40&width=40" },
+    { name: "CloneX", floor: "5.23", change: "+9.4%", image: "/placeholder.svg?height=40&width=40" },
+    { name: "Mutant Ape", floor: "8.91", change: "+11.3%", image: "/placeholder.svg?height=40&width=40" },
+  ]
+
+  const weeklyHighlights = [
+    { name: "PudgyPenguins", price: "9.45", image: "/placeholder.svg?height=120&width=120", bgColor: "bg-green-500" },
+    { name: "Doodles", price: "1.89", image: "/placeholder.svg?height=120&width=120", bgColor: "bg-purple-500" },
+    { name: "Moonbirds", price: "3.67", image: "/placeholder.svg?height=120&width=120", bgColor: "bg-red-500" },
+    { name: "CloneX", price: "5.23", image: "/placeholder.svg?height=120&width=120", bgColor: "bg-blue-500" },
+  ]
+
+  const currentCollection = featuredCollections.find((c) => c.id === selectedCollection) || featuredCollections[0]
 
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="border-b border-gray-800 bg-black/95 backdrop-blur-sm">
+      <header className="border-b border-gray-800/30 bg-black/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-8">
-              <Link href="/" className="text-2xl font-bold text-orange-500">
+              <Link href="/" className="text-2xl font-bold text-blur-orange tracking-tighter">
                 STREAMLINE
               </Link>
               <nav className="hidden md:flex items-center gap-6">
                 <Link
                   href="/collections"
-                  className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider"
                 >
                   COLLECTIONS
                 </Link>
-                <Link href="/trending" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                <Link
+                  href="/trending"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider"
+                >
                   TRENDING
                 </Link>
                 <Link
-                  href="/portfolio"
-                  className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                  href="/drops"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider"
                 >
-                  PORTFOLIO
+                  DROPS
                 </Link>
-                <Link href="/activity" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-                  ACTIVITY
+                <Link
+                  href="/stats"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider"
+                >
+                  STATS
                 </Link>
               </nav>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-2 bg-gray-900 rounded-lg px-3 py-2 w-64">
-                <Search className="h-4 w-4 text-gray-400" />
+              <div className="hidden md:flex items-center gap-2 bg-gray-900/50 border border-gray-800/30 rounded-lg px-3 py-2 w-64">
+                <Search className="h-4 w-4 text-blur-gray" />
                 <input
                   type="text"
-                  placeholder="collections, wallets, or ENS"
-                  className="bg-transparent text-sm text-white placeholder-gray-400 outline-none flex-1"
+                  placeholder="Search collections, items..."
+                  className="bg-transparent text-sm text-white placeholder-blur-gray outline-none flex-1"
                 />
-                <span className="text-xs text-gray-500">⌘K</span>
               </div>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-black font-medium">
-                <ShoppingCart className="h-4 w-4 mr-2" />
+              <Button className="bg-blur-orange hover:bg-blur-orange/90 text-black font-normal rounded-lg transition-colors tracking-wider">
                 CONNECT WALLET
               </Button>
             </div>
@@ -199,494 +214,540 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <main>
-        {/* Hero Section */}
-        <section className="py-12 md:py-24 relative overflow-hidden">
+      <main className="space-y-12">
+        {/* Hero Section - Featured Collection */}
+        <section className="py-8">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Main Featured Collection */}
+              <div className="lg:col-span-2">
+                <div className="relative bg-gradient-to-br from-gray-900 to-black border border-gray-800/30 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+                  <Image
+                    src={currentCollection.image || "/placeholder.svg"}
+                    width={800}
+                    height={400}
+                    alt={currentCollection.name}
+                    className="w-full h-[400px] object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+                    <div className="flex items-center gap-3 mb-4">
+                      <h1 className="text-3xl font-bold text-white">{currentCollection.name}</h1>
+                      {currentCollection.verified && (
+                        <div className="w-6 h-6 bg-blur-orange rounded-full flex items-center justify-center">
+                          <svg className="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                    <div className="grid grid-cols-4 gap-6 mb-6">
+                      <div>
+                        <p className="text-blur-gray text-sm">FLOOR PRICE</p>
+                        <p className="text-xl font-bold">{currentCollection.floorPrice} ETH</p>
+                      </div>
+                      <div>
+                        <p className="text-blur-gray text-sm">ITEMS</p>
+                        <p className="text-xl font-bold">{currentCollection.items}</p>
+                      </div>
+                      <div>
+                        <p className="text-blur-gray text-sm">VOLUME</p>
+                        <p className="text-xl font-bold">{currentCollection.volume} ETH</p>
+                      </div>
+                      <div>
+                        <p className="text-blur-gray text-sm">24H CHANGE</p>
+                        <p
+                          className={`text-xl font-bold ${currentCollection.isPositive ? "text-blur-green" : "text-blur-red"}`}
+                        >
+                          {currentCollection.change}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <Button className="bg-blur-orange hover:bg-blur-orange/90 text-black font-medium rounded-lg">
+                        VIEW COLLECTION
+                      </Button>
+                      <Button variant="outline" className="border-gray-600 text-white hover:bg-gray-800 rounded-lg">
+                        <Play className="h-4 w-4 mr-2" />
+                        WATCH TRAILER
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Collection Selector & Preview */}
               <div className="space-y-6">
-                <div className="space-y-2">
-                  <h2 className="text-sm font-medium text-gray-400 tracking-wider">StreamLine Pro</h2>
-                  <p className="text-sm text-gray-500">BY STREAMLINE LABS</p>
+                <div className="space-y-3">
+                  {featuredCollections.map((collection) => (
+                    <div
+                      key={collection.id}
+                      onClick={() => setSelectedCollection(collection.id)}
+                      className={`p-4 border rounded-xl cursor-pointer transition-all ${
+                        selectedCollection === collection.id
+                          ? "border-blur-orange bg-blur-orange/10"
+                          : "border-gray-800/30 hover:border-gray-700"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <Image
+                          src={collection.avatars[0] || "/placeholder.svg"}
+                          width={40}
+                          height={40}
+                          alt={collection.name}
+                          className="rounded-lg"
+                        />
+                        <div className="flex-1">
+                          <h3 className="font-medium text-white">{collection.name}</h3>
+                          <p className="text-sm text-blur-gray">{collection.floorPrice} ETH</p>
+                        </div>
+                        <div
+                          className={`text-sm font-medium ${collection.isPositive ? "text-blur-green" : "text-blur-red"}`}
+                        >
+                          {collection.change}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
-                <h1 className="text-6xl md:text-8xl font-bold text-white leading-none">
-                  STREAM
-                  <span className="block text-orange-500">LINE</span>
-                </h1>
-
-                <div className="flex items-center gap-8">
-                  <div>
-                    <p className="text-sm text-gray-400">FLOOR PRICE</p>
-                    <p className="text-2xl font-bold">$12</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">MONTHLY VOLUME</p>
-                    <p className="text-2xl font-bold">1.2K</p>
-                  </div>
+                {/* Featured Items Preview */}
+                <div className="grid grid-cols-3 gap-3">
+                  {currentCollection.avatars.map((avatar, index) => (
+                    <div key={index} className="relative group">
+                      <Image
+                        src={avatar || "/placeholder.svg"}
+                        width={80}
+                        height={80}
+                        alt={`${currentCollection.name} #${index + 1}`}
+                        className="w-full aspect-square object-cover rounded-lg border border-gray-800/30"
+                      />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                        <ExternalLink className="h-4 w-4 text-white" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="flex gap-4">
-                  <Button className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-700">
-                    VIEW FEATURES →
-                  </Button>
-                  <Link href="/trending">
-                    <Button className="bg-orange-500 hover:bg-orange-600 text-black font-medium">
-                      VIEW TRENDING →
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-transparent rounded-2xl blur-3xl"></div>
-                <Image
-                  src="/placeholder.svg?height=500&width=600"
-                  width={600}
-                  height={500}
-                  alt="StreamLine Dashboard"
-                  className="relative z-10 rounded-2xl border border-gray-800"
-                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Quick Stats */}
-        <section className="py-12 bg-gray-950">
+        {/* Featured Collections Grid */}
+        <section className="py-8">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="bg-black rounded-lg border border-gray-800 p-6 text-center">
-                <BarChart3 className="h-8 w-8 text-orange-500 mx-auto mb-3" />
-                <p className="text-2xl font-bold">2,847</p>
-                <p className="text-sm text-gray-400">Total Collections</p>
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-2">Featured Collections</h2>
+                <p className="text-blur-gray">Hand-picked collections trending right now</p>
               </div>
-              <div className="bg-black rounded-lg border border-gray-800 p-6 text-center">
-                <TrendingUp className="h-8 w-8 text-orange-500 mx-auto mb-3" />
-                <p className="text-2xl font-bold">15.2K</p>
-                <p className="text-sm text-gray-400">Daily Volume</p>
-              </div>
-              <div className="bg-black rounded-lg border border-gray-800 p-6 text-center">
-                <Users className="h-8 w-8 text-orange-500 mx-auto mb-3" />
-                <p className="text-2xl font-bold">89.3K</p>
-                <p className="text-sm text-gray-400">Active Users</p>
-              </div>
-              <div className="bg-black rounded-lg border border-gray-800 p-6 text-center">
-                <Zap className="h-8 w-8 text-orange-500 mx-auto mb-3" />
-                <p className="text-2xl font-bold">234K</p>
-                <p className="text-sm text-gray-400">Total Trades</p>
-              </div>
+              <Button
+                variant="outline"
+                className="border-gray-800/30 text-blur-gray hover:bg-blur-orange hover:text-black rounded-lg"
+              >
+                VIEW ALL
+              </Button>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {featuredCollections.map((collection) => (
+                <div
+                  key={collection.id}
+                  className="bg-gray-900/30 border border-gray-800/30 rounded-xl overflow-hidden hover:border-blur-orange/30 transition-colors group"
+                >
+                  <div className="relative">
+                    <Image
+                      src={collection.image || "/placeholder.svg"}
+                      width={400}
+                      height={200}
+                      alt={collection.name}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2"
+                      >
+                        <Star className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <h3 className="font-bold text-white">{collection.name}</h3>
+                      {collection.verified && (
+                        <div className="w-4 h-4 bg-blur-orange rounded-full flex items-center justify-center">
+                          <svg className="w-2 h-2 text-black" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <p className="text-blur-gray">Floor Price</p>
+                        <p className="font-medium text-white">{collection.floorPrice} ETH</p>
+                      </div>
+                      <div>
+                        <p className="text-blur-gray">24h Volume</p>
+                        <p className="font-medium text-white">{collection.volume} ETH</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 md:py-24">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to <span className="text-orange-500">streamline</span> your workflow?
-            </h2>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              Join thousands of teams that have transformed their productivity with StreamLine's powerful automation
-              tools.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-black font-medium">Get Started Free</Button>
+        {/* Trending Currencies */}
+        <section className="py-8">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-2">Trending Currencies</h2>
+                <p className="text-blur-gray">Top performing tokens in the last 24h</p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-4 gap-4">
+              {trendingCurrencies.map((currency, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-900/30 border border-gray-800/30 rounded-xl p-4 hover:border-blur-orange/30 transition-colors"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <Image
+                      src={currency.icon || "/placeholder.svg"}
+                      width={32}
+                      height={32}
+                      alt={currency.name}
+                      className="rounded-full"
+                    />
+                    <div>
+                      <h3 className="font-medium text-white">{currency.name}</h3>
+                      <p className="text-sm text-blur-gray">{currency.symbol}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p className="font-bold text-white">${currency.price}</p>
+                    <div
+                      className={`flex items-center gap-1 text-sm font-medium ${currency.isPositive ? "text-blur-green" : "text-blur-red"}`}
+                    >
+                      {currency.isPositive ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
+                      {currency.change}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Drops */}
+        <section className="py-8">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-2">Featured Drops</h2>
+                <p className="text-blur-gray">Upcoming and live NFT drops you shouldn't miss</p>
+              </div>
+              <Button
+                variant="outline"
+                className="border-gray-800/30 text-blur-gray hover:bg-blur-orange hover:text-black rounded-lg"
+              >
+                VIEW ALL DROPS
+              </Button>
+            </div>
+            <div className="grid md:grid-cols-4 gap-6">
+              {featuredDrops.map((drop, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-900/30 border border-gray-800/30 rounded-xl overflow-hidden hover:border-blur-orange/30 transition-colors"
+                >
+                  <div className="relative">
+                    <Image
+                      src={drop.image || "/placeholder.svg"}
+                      width={200}
+                      height={200}
+                      alt={drop.name}
+                      className="w-full aspect-square object-cover"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span
+                        className={`px-2 py-1 text-xs font-medium rounded-full ${
+                          drop.status === "Live"
+                            ? "bg-blur-green text-black"
+                            : drop.status === "Coming Soon"
+                              ? "bg-blue-500 text-white"
+                              : "bg-gray-500 text-white"
+                        }`}
+                      >
+                        {drop.status}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-white mb-2">{drop.name}</h3>
+                    <p className="text-blur-gray text-sm mb-3">Mint Price: {drop.price} ETH</p>
+                    <Button className="w-full bg-blur-orange hover:bg-blur-orange/90 text-black font-medium rounded-lg">
+                      {drop.status === "Live" ? "MINT NOW" : drop.status === "Coming Soon" ? "NOTIFY ME" : "SOLD OUT"}
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Top Movers Today */}
+        <section className="py-8">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-2">Top Movers Today</h2>
+                <p className="text-blur-gray">Collections with the highest volume increase</p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-4 gap-6">
+              {topMovers.map((mover, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-900/30 border border-gray-800/30 rounded-xl p-6 hover:border-blur-orange/30 transition-colors"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <Image
+                      src={mover.image || "/placeholder.svg"}
+                      width={60}
+                      height={60}
+                      alt={mover.name}
+                      className="rounded-lg"
+                    />
+                    <div>
+                      <h3 className="font-bold text-white">{mover.name}</h3>
+                      <p className="text-blur-gray text-sm">Volume: {mover.volume} ETH</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4 text-blur-green" />
+                    <span className="text-blur-green font-medium">{mover.change}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Trending Collections */}
+        <section className="py-8">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-2">Trending Collections</h2>
+                <p className="text-blur-gray">Most popular collections right now</p>
+              </div>
               <Link href="/trending">
-                <Button variant="outline" className="border-gray-700 text-white hover:bg-gray-800">
-                  Explore Trending
+                <Button
+                  variant="outline"
+                  className="border-gray-800/30 text-blur-gray hover:bg-blur-orange hover:text-black rounded-lg"
+                >
+                  VIEW ALL
                 </Button>
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* Navigation Tabs */}
-        <section className="border-b border-gray-800">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between py-4">
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-2 text-orange-500">
-                  <BarChart3 className="h-4 w-4" />
-                  <span className="text-sm font-medium">COLLECTIONS</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer">
-                  <TrendingUp className="h-4 w-4" />
-                  <span className="text-sm font-medium">TRENDING</span>
-                </div>
-                {/* <div className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer">
-                  <Star className="h-4 w-4" />
-                  <span className="text-sm font-medium">FAVORITES</span>
-                </div> */}
-                <div className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors cursor-pointer">
-                  <Zap className="h-4 w-4" />
-                  <span className="text-sm font-medium">POINTS</span>
-                </div>
-              </div>
-              {/* <div className="flex items-center gap-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setViewMode("list")}
-                  className={viewMode === "list" ? "text-orange-500" : "text-gray-400"}
+            <div className="grid md:grid-cols-3 gap-4">
+              {trendingCollections.map((collection, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-4 bg-gray-900/30 border border-gray-800/30 rounded-xl p-4 hover:border-blur-orange/30 transition-colors"
                 >
-                  <List className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setViewMode("grid")}
-                  className={viewMode === "grid" ? "text-orange-500" : "text-gray-400"}
-                >
-                  <Grid className="h-4 w-4" />
-                </Button>
-              </div> */}
+                  <span className="text-blur-gray font-medium w-6">{index + 1}</span>
+                  <Image
+                    src={collection.image || "/placeholder.svg"}
+                    width={40}
+                    height={40}
+                    alt={collection.name}
+                    className="rounded-lg"
+                  />
+                  <div className="flex-1">
+                    <h3 className="font-medium text-white">{collection.name}</h3>
+                    <p className="text-sm text-blur-gray">Floor: {collection.floor} ETH</p>
+                  </div>
+                  <div className="text-blur-green text-sm font-medium">{collection.change}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Main Content */}
-        {/* <section className="py-6">
+        {/* Highest Weekly Sales */}
+        <section className="py-8">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-4 gap-6"> */}
-        {/* Collections Table */}
-        {/* <div className="lg:col-span-3">
-                <div className="bg-gray-950 rounded-lg border border-gray-800 overflow-hidden">
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead className="border-b border-gray-800">
-                        <tr className="text-left">
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            FLOOR PRICE
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            FLOOR PRICE
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            TOP BID
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            1D CHANGE
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            7D CHANGE
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            15M VOLUME
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            1D VOLUME ↓
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            7D VOLUME
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            OWNERS
-                          </th>
-                          <th className="px-4 py-3 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                            SUPPLY
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-gray-800">
-                        {collections.map((collection, index) => (
-                          <tr key={collection.id} className="hover:bg-gray-900/50 transition-colors">
-                            <td className="px-4 py-4">
-                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center overflow-hidden">
-                                  <Image
-                                    src={collection.avatar || "/placeholder.svg"}
-                                    width={32}
-                                    height={32}
-                                    alt={collection.name}
-                                    className="w-full h-full object-cover"
-                                  />
-                                </div>
-                                <span className="font-medium text-sm">{collection.name}</span>
-                              </div>
-                            </td>
-                            <td className="px-4 py-4">
-                              <div className="flex items-center gap-1">
-                                <span className="font-medium">{collection.floorPrice}</span>
-                                <span className="text-orange-500">Ξ</span>
-                              </div>
-                            </td>
-                            <td className="px-4 py-4">
-                              <div className="flex items-center gap-1">
-                                <span className="font-medium">{collection.topBid}</span>
-                                <span className="text-orange-500">Ξ</span>
-                              </div>
-                            </td>
-                            <td
-                              className={`px-4 py-4 font-medium ${collection.isPositive1d ? "text-green-400" : "text-red-400"}`}
-                            >
-                              {collection.change1d}
-                            </td>
-                            <td
-                              className={`px-4 py-4 font-medium ${collection.isPositive7d ? "text-green-400" : "text-red-400"}`}
-                            >
-                              {collection.change7d}
-                            </td>
-                            <td className="px-4 py-4">
-                              <div className="flex items-center gap-1">
-                                <span className="font-medium">{collection.change15m}</span>
-                                {collection.change15m !== "-" && <span className="text-orange-500">Ξ</span>}
-                              </div>
-                            </td>
-                            <td className="px-4 py-4">
-                              <div className="flex items-center gap-1">
-                                <span className="font-medium">{collection.volume1d}</span>
-                                <span className="text-orange-500">Ξ</span>
-                              </div>
-                            </td>
-                            <td className="px-4 py-4">
-                              <div className="flex items-center gap-1">
-                                <span className="font-medium">{collection.volume7d}</span>
-                                <span className="text-orange-500">Ξ</span>
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 text-gray-400">
-                              {collection.owners} ({collection.ownerPercentage})
-                            </td>
-                            <td className="px-4 py-4 text-gray-400">{collection.supply}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div> */}
-
-        {/* Shopping Cart */}
-        {/* <div className="lg:col-span-1">
-                <div className="bg-gray-950 rounded-lg border border-gray-800 p-4">
-                  <h3 className="text-lg font-bold mb-4 text-orange-500">SWEEP ACROSS MULTIPLE MARKETPLACES</h3>
-
-                  <div className="space-y-3 mb-4">
-                    {cartItems.map((item, index) => (
-                      <div key={item.id} className="flex items-center gap-3 p-2 bg-gray-900 rounded">
-                        <input type="checkbox" className="rounded" defaultChecked />
-                        <Image
-                          src={item.image || "/placeholder.svg"}
-                          width={40}
-                          height={40}
-                          alt={`Item ${item.id}`}
-                          className="rounded"
-                        />
-                        <div className="flex-1">
-                          <p className="text-sm font-medium">#{item.id}</p>
-                          <p className="text-xs text-gray-400">8893</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-sm font-medium">{item.price} Ξ</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="border-t border-gray-800 pt-4">
-                    <div className="flex items-center gap-2 mb-4">
-                      <input type="checkbox" className="rounded" />
-                      <span className="text-sm">SKIP PENDING</span>
-                      <Zap className="h-4 w-4 text-orange-500" />
-                      <span className="text-sm">1</span>
-                    </div>
-
-                    <Button className="w-full bg-orange-500 hover:bg-orange-600 text-black font-medium">
-                      BUY 4 ITEMS Ξ{totalCartValue.toFixed(2)}
-                    </Button>
-                  </div>
-                </div>
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-bold text-white mb-2">Highest Weekly Sales</h2>
+                <p className="text-blur-gray">Top performing collections this week</p>
               </div>
             </div>
-          </div>
-        </section> */}
-
-        {/* Live Activity & Testimonials */}
-        {/* <section className="py-12 bg-gray-950">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-8"> */}
-        {/* Live Activity */}
-        {/* <div>
-                <h3 className="text-xl font-bold mb-6 text-orange-500">SNIPE REVEALS FASTER THAN ANYWHERE ELSE</h3>
-
-                <div className="bg-black rounded-lg border border-gray-800 p-4">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Activity className="h-4 w-4 text-orange-500" />
-                    <span className="text-sm font-medium">LIVE ACTIVITY</span>
+            <div className="grid md:grid-cols-4 gap-6">
+              {weeklyHighlights.map((highlight, index) => (
+                <div
+                  key={index}
+                  className={`${highlight.bgColor} rounded-2xl p-6 relative overflow-hidden group hover:scale-105 transition-transform`}
+                >
+                  <div className="relative z-10">
+                    <h3 className="font-bold text-white mb-2">{highlight.name}</h3>
+                    <p className="text-white/80 text-sm mb-4">Floor: {highlight.price} ETH</p>
+                    <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white border-0 rounded-lg">
+                      VIEW COLLECTION
+                    </Button>
                   </div>
-
-                  <div className="space-y-2">
-                    <div className="grid grid-cols-4 gap-4 text-xs text-gray-400 uppercase tracking-wider border-b border-gray-800 pb-2">
-                      <span>ITEM STATUS</span>
-                      <span>PRICE</span>
-                      <span>BUYER</span>
-                      <span></span>
-                    </div>
-
-                    {liveActivity.map((activity, index) => (
-                      <div key={index} className="grid grid-cols-4 gap-4 text-sm py-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-400">{activity.time}</span>
-                          <span className="text-xs bg-green-600 px-2 py-1 rounded">{activity.action}</span>
-                        </div>
-                        <span className="font-medium">{activity.price} Ξ</span>
-                        <span className="text-gray-400">{activity.buyer}</span>
-                        <div className="flex gap-1">
-                          <Check className="h-4 w-4 text-green-400" />
-                          <X className="h-4 w-4 text-gray-600" />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-4">
-                      <span className="flex items-center gap-1">
-                        <Users className="h-3 w-3" />
-                        32 BIDS
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <BarChart3 className="h-3 w-3" />
-                        383 PRIORITY 50 / MAX FEE 50
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-2 mt-4">
-                    <Button size="sm" variant="outline" className="border-gray-700 text-gray-300">
-                      50
-                    </Button>
-                    <Button size="sm" variant="outline" className="border-gray-700 text-gray-300">
-                      100
-                    </Button>
-                    <Button size="sm" variant="outline" className="border-gray-700 text-gray-300">
-                      150
-                    </Button>
-                    <Button size="sm" className="bg-green-600 hover:bg-green-700">
-                      +10
-                    </Button>
+                  <div className="absolute bottom-0 right-0 opacity-20">
+                    <Image
+                      src={highlight.image || "/placeholder.svg"}
+                      width={120}
+                      height={120}
+                      alt={highlight.name}
+                      className="rounded-lg"
+                    />
                   </div>
                 </div>
-              </div> */}
-
-        {/* Testimonials */}
-        {/* <div className="space-y-6">
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="bg-black rounded-lg border border-orange-500 p-6">
-                    <div className="flex items-start gap-3 mb-4">
-                      <div className="w-10 h-10 bg-gray-700 rounded-full"></div>
-                      <div>
-                        <p className="font-bold text-orange-500">{testimonial.username}</p>
-                        <p className="text-sm text-gray-400">{testimonial.handle}</p>
-                      </div>
-                      <div className="ml-auto">
-                        <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <p className="text-white mb-4">{testimonial.content}</p>
-                    <p className="text-sm text-gray-400">{testimonial.time}</p>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
-        </section> */}
+        </section>
+
+        {/* Newsletter Signup */}
+        <section className="py-16 bg-gradient-to-r from-blur-orange/10 to-purple-500/10">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold text-white mb-4">Stay Updated</h2>
+            <p className="text-blur-gray mb-8 max-w-2xl mx-auto">
+              Get the latest drops, trending collections, and market insights delivered to your inbox.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 bg-gray-900/50 border border-gray-800/30 rounded-lg px-4 py-3 text-white placeholder-blur-gray outline-none focus:border-blur-orange"
+              />
+              <Button className="bg-blur-orange hover:bg-blur-orange/90 text-black font-medium rounded-lg px-8">
+                Subscribe
+              </Button>
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
-      {/* <footer className="border-t border-gray-800 bg-black py-12">
+      <footer className="border-t border-gray-800/30 bg-black py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <Link href="/" className="text-xl font-bold text-orange-500 mb-4 block">
+              <Link href="/" className="text-xl font-bold text-blur-orange tracking-tighter mb-4 block">
                 STREAMLINE
               </Link>
-              <p className="text-gray-400 text-sm">The ultimate productivity platform for modern teams.</p>
+              <p className="text-blur-gray text-sm mb-4">The ultimate NFT marketplace for creators and collectors.</p>
+              <div className="flex gap-4">
+                <Button size="sm" variant="ghost" className="text-blur-gray hover:text-blur-orange p-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                  </svg>
+                </Button>
+                <Button size="sm" variant="ghost" className="text-blur-gray hover:text-blur-orange p-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </Button>
+              </div>
             </div>
             <div>
-              <h4 className="font-medium mb-4">Product</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-medium text-white mb-4">Marketplace</h4>
+              <ul className="space-y-2 text-sm text-blur-gray">
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Collections
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    All Collections
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Portfolio
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    Trending
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Activity
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    New Drops
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    API
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    Top Sellers
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-medium mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-medium text-white mb-4">Resources</h4>
+              <ul className="space-y-2 text-sm text-blur-gray">
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-medium mb-4">Support</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>
-                  <Link href="#" className="hover:text-white transition-colors">
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
                     Help Center
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Documentation
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    Creator Guide
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Status
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    API Docs
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-white transition-colors">
-                    Community
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-medium text-white mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-blur-gray">
+                <li>
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    Terms
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-blur-orange transition-colors">
+                    Privacy
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; {new Date().getFullYear()} StreamLine. All rights reserved.</p>
+          <div className="border-t border-gray-800/30 mt-8 pt-8 text-center text-sm text-blur-gray">
+            <p>&copy; {new Date().getFullYear()} STREAMLINE. All rights reserved.</p>
           </div>
         </div>
-      </footer> */}
+      </footer>
     </div>
   )
 }
