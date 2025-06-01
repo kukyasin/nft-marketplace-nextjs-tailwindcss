@@ -172,27 +172,164 @@ export default function LandingPage() {
               <nav className="hidden md:flex items-center gap-6">
                 <Link
                   href="/collections"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
                 >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      d="M3 6C3 4.34315 4.34315 3 6 3H8C9.65685 3 11 4.34315 11 6V8C11 9.65685 9.65685 11 8 11H6C4.34315 11 3 9.65685 3 8V6Z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M13 6C13 4.34315 14.3431 3 16 3H18C19.6569 3 21 4.34315 21 6V8C21 9.65685 19.6569 11 18 11H16C14.3431 11 13 9.65685 13 8V6Z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M3 16C3 14.3431 4.34315 13 6 13H8C9.65685 13 11 14.3431 11 16V18C11 19.6569 9.65685 21 8 21H6C4.34315 21 3 19.6569 3 18V16Z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M13 16C13 14.3431 14.3431 13 16 13H18C19.6569 13 21 14.3431 21 16V18C21 19.6569 19.6569 21 18 21H16C14.3431 21 13 19.6569 13 18V16Z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
                   COLLECTIONS
                 </Link>
                 <Link
                   href="/trending"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
                 >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V5Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M19 9C19 8.44772 18.5523 8 18 8C17.4477 8 17 8.44772 17 9V19C17 19.5523 17.4477 20 18 20C18.5523 20 19 19.5523 19 19V9Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M7 13C7 12.4477 6.55228 12 6 12C5.44772 12 5 12.4477 5 13V19C5 19.5523 5.44772 20 6 20C6.55228 20 7 19.5523 7 19V13Z"
+                      fill="currentColor"
+                    />
+                  </svg>
                   TRENDING
                 </Link>
                 <Link
                   href="/drops"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
                 >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M12 3C12.5523 3 13 3.44772 13 4V10.5858L15.2929 8.29289C15.6834 7.90237 16.3166 7.90237 16.7071 8.29289C17.0976 8.68342 17.0976 9.31658 16.7071 9.70711L12.7071 13.7071C12.3166 14.0976 11.6834 14.0976 11.2929 13.7071L7.29289 9.70711C6.90237 9.31658 6.90237 8.68342 7.29289 8.29289C7.68342 7.90237 8.31658 7.90237 8.70711 8.29289L11 10.5858V4C11 3.44772 11.4477 3 12 3ZM5 16C5 15.4477 5.44772 15 6 15H18C18.5523 15 19 15.4477 19 16V20C19 20.5523 18.5523 21 18 21H6C5.44772 21 5 20.5523 5 20V16Z"
+                      fill="currentColor"
+                    />
+                  </svg>
                   DROPS
                 </Link>
                 <Link
                   href="/stats"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
                 >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      d="M8 11C7.44772 11 7 11.4477 7 12V19C7 19.5523 7.44772 20 8 20C8.55228 20 9 19.5523 9 19V12C9 11.4477 8.55228 11 8 11Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M12 8C11.4477 8 11 8.44772 11 9V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V9C13 8.44772 12.5523 8 12 8Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M16 15C15.4477 15 15 15.4477 15 16V19C15 19.5523 15.4477 20 16 20C16.5523 20 17 19.5523 17 19V16C17 15.4477 16.5523 15 16 15Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M16 4C15.4477 4 15 4.44772 15 5V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V5C17 4.44772 16.5523 4 16 4Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M8 4C7.44772 4 7 4.44772 7 5V7C7 7.55228 7.44772 8 8 8C8.55228 8 9 7.55228 9 7V5C9 4.44772 8.55228 4 8 4Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z"
+                      fill="currentColor"
+                    />
+                  </svg>
                   STATS
+                </Link>
+                <Link
+                  href="/activity"
+                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M5 4C4.44772 4 4 4.44772 4 5V19C4 19.5523 4.44772 20 5 20H19C19.5523 20 20 19.5523 20 19V5C20 4.44772 19.5523 4 19 4H5ZM2 5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V5Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M8 10C8.55228 10 9 10.4477 9 11V17C9 17.5523 8.55228 18 8 18C7.44772 18 7 17.5523 7 17V11C7 10.4477 7.44772 10 8 10Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M12 7C12.5523 7 13 7.44772 13 8V17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17V8C11 7.44772 11.4477 7 12 7Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M16 13C16.5523 13 17 13.4477 17 14V17C17 17.5523 16.5523 18 16 18C15.4477 18 15 17.5523 15 17V14C15 13.4477 15.4477 13 16 13Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  ACTIVITY
                 </Link>
               </nav>
             </div>
