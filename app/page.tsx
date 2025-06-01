@@ -1,131 +1,19 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Search, TrendingUp, TrendingDown, Star, Play, ExternalLink } from "lucide-react"
+import { TrendingUp, TrendingDown, Star, Play, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+
+// Import JSON data
+import featuredCollectionsData from "@/data/featured-collections.json"
+import trendingCurrenciesData from "@/data/trending-currencies.json"
 
 export default function LandingPage() {
   const [selectedCollection, setSelectedCollection] = useState("bayc")
-
-  const featuredCollections = [
-    {
-      id: "bayc",
-      name: "Bored Ape Yacht Club",
-      verified: true,
-      floorPrice: "12.5",
-      items: "10,000",
-      volume: "8,500",
-      change: "+2.5%",
-      isPositive: true,
-      image: "/placeholder.svg?height=400&width=600",
-      avatars: [
-        "/placeholder.svg?height=60&width=60",
-        "/placeholder.svg?height=60&width=60",
-        "/placeholder.svg?height=60&width=60",
-      ],
-    },
-    {
-      id: "cryptopunks",
-      name: "CryptoPunks",
-      verified: true,
-      floorPrice: "45.2",
-      items: "10,000",
-      volume: "15,200",
-      change: "+5.8%",
-      isPositive: true,
-      image: "/placeholder.svg?height=400&width=600",
-      avatars: [
-        "/placeholder.svg?height=60&width=60",
-        "/placeholder.svg?height=60&width=60",
-        "/placeholder.svg?height=60&width=60",
-      ],
-    },
-    {
-      id: "azuki",
-      name: "Azuki",
-      verified: true,
-      floorPrice: "8.9",
-      items: "10,000",
-      volume: "3,400",
-      change: "-1.2%",
-      isPositive: false,
-      image: "/placeholder.svg?height=400&width=600",
-      avatars: [
-        "/placeholder.svg?height=60&width=60",
-        "/placeholder.svg?height=60&width=60",
-        "/placeholder.svg?height=60&width=60",
-      ],
-    },
-  ]
-
-  const trendingCurrencies = [
-    {
-      name: "Hasuki",
-      symbol: "HSK",
-      price: "0.0012",
-      change: "+12.5%",
-      isPositive: true,
-      icon: "/placeholder.svg?height=32&width=32",
-    },
-    {
-      name: "OKX",
-      symbol: "OKX",
-      price: "45.67",
-      change: "+8.3%",
-      isPositive: true,
-      icon: "/placeholder.svg?height=32&width=32",
-    },
-    {
-      name: "Binance",
-      symbol: "BNB",
-      price: "312.45",
-      change: "-2.1%",
-      isPositive: false,
-      icon: "/placeholder.svg?height=32&width=32",
-    },
-    {
-      name: "Tory Inu",
-      symbol: "TORY",
-      price: "0.00034",
-      change: "+156.7%",
-      isPositive: true,
-      icon: "/placeholder.svg?height=32&width=32",
-    },
-    {
-      name: "LEMON STACK",
-      symbol: "LEMON",
-      price: "1.23",
-      change: "+45.2%",
-      isPositive: true,
-      icon: "/placeholder.svg?height=32&width=32",
-    },
-    {
-      name: "Solana",
-      symbol: "SOL",
-      price: "98.76",
-      change: "+12.8%",
-      isPositive: true,
-      icon: "/placeholder.svg?height=32&width=32",
-    },
-    {
-      name: "Polygon",
-      symbol: "MATIC",
-      price: "0.87",
-      change: "-5.4%",
-      isPositive: false,
-      icon: "/placeholder.svg?height=32&width=32",
-    },
-    {
-      name: "Avalanche",
-      symbol: "AVAX",
-      price: "23.45",
-      change: "+7.9%",
-      isPositive: true,
-      icon: "/placeholder.svg?height=32&width=32",
-    },
-  ]
 
   const featuredDrops = [
     { name: "Doodle Punks", price: "0.08", image: "/placeholder.svg?height=200&width=200", status: "Live" },
@@ -157,199 +45,12 @@ export default function LandingPage() {
     { name: "CloneX", price: "5.23", image: "/placeholder.svg?height=120&width=120", bgColor: "bg-blue-500" },
   ]
 
-  const currentCollection = featuredCollections.find((c) => c.id === selectedCollection) || featuredCollections[0]
+  const currentCollection =
+    featuredCollectionsData.find((c) => c.id === selectedCollection) || featuredCollectionsData[0]
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="border-b border-gray-800/30 bg-black/95 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center gap-8">
-              <Link href="/" className="text-2xl font-bold text-blur-orange tracking-tighter">
-                STREAMLINE
-              </Link>
-              <nav className="hidden md:flex items-center gap-6">
-                <Link
-                  href="/collections"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      d="M3 6C3 4.34315 4.34315 3 6 3H8C9.65685 3 11 4.34315 11 6V8C11 9.65685 9.65685 11 8 11H6C4.34315 11 3 9.65685 3 8V6Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M13 6C13 4.34315 14.3431 3 16 3H18C19.6569 3 21 4.34315 21 6V8C21 9.65685 19.6569 11 18 11H16C14.3431 11 13 9.65685 13 8V6Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M3 16C3 14.3431 4.34315 13 6 13H8C9.65685 13 11 14.3431 11 16V18C11 19.6569 9.65685 21 8 21H6C4.34315 21 3 19.6569 3 18V16Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M13 16C13 14.3431 14.3431 13 16 13H18C19.6569 13 21 14.3431 21 16V18C21 19.6569 19.6569 21 18 21H16C14.3431 21 13 19.6569 13 18V16Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                  COLLECTIONS
-                </Link>
-                <Link
-                  href="/trending"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V5Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M19 9C19 8.44772 18.5523 8 18 8C17.4477 8 17 8.44772 17 9V19C17 19.5523 17.4477 20 18 20C18.5523 20 19 19.5523 19 19V9Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M7 13C7 12.4477 6.55228 12 6 12C5.44772 12 5 12.4477 5 13V19C5 19.5523 5.44772 20 6 20C6.55228 20 7 19.5523 7 19V13Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  TRENDING
-                </Link>
-                <Link
-                  href="/drops"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M12 3C12.5523 3 13 3.44772 13 4V10.5858L15.2929 8.29289C15.6834 7.90237 16.3166 7.90237 16.7071 8.29289C17.0976 8.68342 17.0976 9.31658 16.7071 9.70711L12.7071 13.7071C12.3166 14.0976 11.6834 14.0976 11.2929 13.7071L7.29289 9.70711C6.90237 9.31658 6.90237 8.68342 7.29289 8.29289C7.68342 7.90237 8.31658 7.90237 8.70711 8.29289L11 10.5858V4C11 3.44772 11.4477 3 12 3ZM5 16C5 15.4477 5.44772 15 6 15H18C18.5523 15 19 15.4477 19 16V20C19 20.5523 18.5523 21 18 21H6C5.44772 21 5 20.5523 5 20V16Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  DROPS
-                </Link>
-                <Link
-                  href="/stats"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      d="M8 11C7.44772 11 7 11.4477 7 12V19C7 19.5523 7.44772 20 8 20C8.55228 20 9 19.5523 9 19V12C9 11.4477 8.55228 11 8 11Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M12 8C11.4477 8 11 8.44772 11 9V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V9C13 8.44772 12.5523 8 12 8Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M16 15C15.4477 15 15 15.4477 15 16V19C15 19.5523 15.4477 20 16 20C16.5523 20 17 19.5523 17 19V16C17 15.4477 16.5523 15 16 15Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M16 4C15.4477 4 15 4.44772 15 5V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V5C17 4.44772 16.5523 4 16 4Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M8 4C7.44772 4 7 4.44772 7 5V7C7 7.55228 7.44772 8 8 8C8.55228 8 9 7.55228 9 7V5C9 4.44772 8.55228 4 8 4Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  STATS
-                </Link>
-                <Link
-                  href="/activity"
-                  className="text-sm font-normal text-gray-300 hover:text-blur-orange transition-colors tracking-wider flex items-center gap-1"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M5 4C4.44772 4 4 4.44772 4 5V19C4 19.5523 4.44772 20 5 20H19C19.5523 20 20 19.5523 20 19V5C20 4.44772 19.5523 4 19 4H5ZM2 5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V5Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M8 10C8.55228 10 9 10.4477 9 11V17C9 17.5523 8.55228 18 8 18C7.44772 18 7 17.5523 7 17V11C7 10.4477 7.44772 10 8 10Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M12 7C12.5523 7 13 7.44772 13 8V17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17V8C11 7.44772 11.4477 7 12 7Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M16 13C16.5523 13 17 13.4477 17 14V17C17 17.5523 16.5523 18 16 18C15.4477 18 15 17.5523 15 17V14C15 13.4477 15.4477 13 16 13Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  ACTIVITY
-                </Link>
-              </nav>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-2 bg-gray-900/50 border border-gray-800/30 rounded-lg px-3 py-2 w-64">
-                <Search className="h-4 w-4 text-blur-gray" />
-                <input
-                  type="text"
-                  placeholder="Search collections, items..."
-                  className="bg-transparent text-sm text-white placeholder-blur-gray outline-none flex-1"
-                />
-              </div>
-              <Button className="bg-blur-orange hover:bg-blur-orange/90 text-black font-normal rounded-lg transition-colors tracking-wider">
-                CONNECT WALLET
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="space-y-12">
         {/* Hero Section - Featured Collection */}
@@ -420,7 +121,7 @@ export default function LandingPage() {
               {/* Collection Selector & Preview */}
               <div className="space-y-6">
                 <div className="space-y-3">
-                  {featuredCollections.map((collection) => (
+                  {featuredCollectionsData.map((collection) => (
                     <div
                       key={collection.id}
                       onClick={() => setSelectedCollection(collection.id)}
@@ -490,7 +191,7 @@ export default function LandingPage() {
               </Button>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
-              {featuredCollections.map((collection) => (
+              {featuredCollectionsData.map((collection) => (
                 <div
                   key={collection.id}
                   className="bg-gray-900/30 border border-gray-800/30 rounded-xl overflow-hidden hover:border-blur-orange/30 transition-colors group"
@@ -555,7 +256,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="grid md:grid-cols-4 gap-4">
-              {trendingCurrencies.map((currency, index) => (
+              {trendingCurrenciesData.map((currency, index) => (
                 <div
                   key={index}
                   className="bg-gray-900/30 border border-gray-800/30 rounded-xl p-4 hover:border-blur-orange/30 transition-colors"
@@ -782,109 +483,7 @@ export default function LandingPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-800/30 bg-black py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <Link href="/" className="text-xl font-bold text-blur-orange tracking-tighter mb-4 block">
-                STREAMLINE
-              </Link>
-              <p className="text-blur-gray text-sm mb-4">The ultimate NFT marketplace for creators and collectors.</p>
-              <div className="flex gap-4">
-                <Button size="sm" variant="ghost" className="text-blur-gray hover:text-blur-orange p-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                  </svg>
-                </Button>
-                <Button size="sm" variant="ghost" className="text-blur-gray hover:text-blur-orange p-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </Button>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-medium text-white mb-4">Marketplace</h4>
-              <ul className="space-y-2 text-sm text-blur-gray">
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    All Collections
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    Trending
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    New Drops
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    Top Sellers
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-medium text-white mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm text-blur-gray">
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    Creator Guide
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    API Docs
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-medium text-white mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-blur-gray">
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    Terms
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-blur-orange transition-colors">
-                    Privacy
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800/30 mt-8 pt-8 text-center text-sm text-blur-gray">
-            <p>&copy; {new Date().getFullYear()} STREAMLINE. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

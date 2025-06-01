@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Hasuki",
+    "symbol": "HSK",
+    "price": "0.0012",
+    "change": "+12.5%",
+    "isPositive": true,
+    "icon": "/placeholder.svg?height=32&width=32"
+  },
+  {
+    "name": "OKX",
+    "symbol": "OKX",
+    "price": "45.67",
+    "change": "+8.3%",
+    "isPositive": true,
+    "icon": "/placeholder.svg?height=32&width=32"
+  },
+  {
+    "name": "Binance",
+    "symbol": "BNB",
+    "price": "312.45",
+    "change": "-2.1%",
+    "isPositive": false,
+    "icon": "/placeholder.svg?height=32&width=32"
+  },
+  {
+    "name": "Tory Inu",
+    "symbol": "TORY",
+    "price": "0.00034",
+    "change": "+156.7%",
+    "isPositive": true,
+    "icon": "/placeholder.svg?height=32&width=32"
+  },
+  {
+    "name": "LEMON STACK",
+    "symbol": "LEMON",
+    "price": "1.23",
+    "change": "+45.2%",
+    "isPositive": true,
+    "icon": "/placeholder.svg?height=32&width=32"
+  },
+  {
+    "name": "Solana",
+    "symbol": "SOL",
+    "price": "98.76",
+    "change": "+12.8%",
+    "isPositive": true,
+    "icon": "/placeholder.svg?height=32&width=32"
+  },
+  {
+    "name": "Polygon",
+    "symbol": "MATIC",
+    "price": "0.87",
+    "change": "-5.4%",
+    "isPositive": false,
+    "icon": "/placeholder.svg?height=32&width=32"
+  },
+  {
+    "name": "Avalanche",
+    "symbol": "AVAX",
+    "price": "23.45",
+    "change": "+7.9%",
+    "isPositive": true,
+    "icon": "/placeholder.svg?height=32&width=32"
+  }
+]
