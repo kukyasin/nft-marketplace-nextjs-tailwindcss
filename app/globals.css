@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 24 100% 50%;
+    --radius: 0.25rem;
+
+    /* Blur.io specific colors */
+    --blur-orange: #f95200;
+    --blur-green: #ade25d;
+    --blur-red: #f95200;
+    --blur-gray: #929292;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-black text-white;
+    font-family: var(--font-proto-mono), monospace;
+    font-feature-settings: "ss01" on, "ss02" on, "cv01" on, "cv03" on;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #111;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--blur-orange);
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff6b00;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: var(--blur-orange);
+    color: #000;
+    text-shadow: none;
+  }
+
+  /* Input cursor */
+  input:focus {
+    caret-color: var(--blur-orange);
+  }
+
+  /* Focus outline */
+  *:focus-visible {
+    outline: 1px solid var(--blur-orange);
+    outline-offset: 2px;
+  }
+}
+
+/* Blur.io specific utility classes */
+.text-blur-orange {
+  color: var(--blur-orange);
+}
+
+.text-blur-green {
+  color: var(--blur-green);
+}
+
+.text-blur-red {
+  color: var(--blur-red);
+}
+
+.text-blur-gray {
+  color: var(--blur-gray);
+}
+
+.bg-blur-orange {
+  background-color: var(--blur-orange);
+}
+
+.border-blur-orange {
+  border-color: var(--blur-orange);
+}
+
+.hover\:bg-blur-orange:hover {
+  background-color: var(--blur-orange);
+}
+
+.hover\:text-blur-orange:hover {
+  color: var(--blur-orange);
+}
+
+.hover\:border-blur-orange:hover {
+  border-color: var(--blur-orange);
+}
+
+/* Terminal-style table */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--blur-gray);
+}
+
+td,
+th {
+  padding: 0.75rem 1rem;
+}
+
+/* Row hover effect */
+tr {
+  transition: background-color 0.15s ease;
+}
+
+tr:hover {
+  background-color: rgba(249, 82, 0, 0.03);
+}
+
+/* Ethereum symbol */
+.eth-symbol {
+  font-family: var(--font-proto-mono), monospace;
+  color: var(--blur-orange);
+  font-weight: normal;
+}
