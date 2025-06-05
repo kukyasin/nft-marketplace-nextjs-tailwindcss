@@ -79,7 +79,7 @@ export default function WalletModal({ isOpen, onClose }: WalletModalProps) {
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
               </svg>
             </div>
-            <h2 className="text-xl font-semibold text-white">Connect with OpenSea</h2>
+            <h2 className="text-xl font-semibold text-white">Connect Wallet</h2>
           </div>
           <Button variant="ghost" size="sm" onClick={onClose} className="text-gray-400 hover:text-white p-2">
             <X className="h-5 w-5" />
@@ -150,7 +150,7 @@ export default function WalletModal({ isOpen, onClose }: WalletModalProps) {
         {/* Terms */}
         <div className="px-6 pb-6 text-center">
           <p className="text-xs text-gray-400">
-            By connecting your wallet and using OpenSea, you agree to our{" "}
+            By connecting your wallet, you agree to our{" "}
             <button className="text-blue-400 hover:text-blue-300 underline">Terms of Service</button> &{" "}
             <button className="text-blue-400 hover:text-blue-300 underline">Privacy Policy</button>.
           </p>

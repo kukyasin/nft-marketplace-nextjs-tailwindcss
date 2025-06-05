@@ -33,8 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>STREAMLINE | NFT Trading Platform</title>
-        <meta name="description" content="The ultimate NFT trading platform" />
+        <title>NEXUS | NFT Trading Platform</title>
+        <meta
+          name="description"
+          content="Modern NFT trading platform for discovering and trading digital collectibles"
+        />
       </head>
       <body className={`${protoMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
@@ -46,5 +49,5 @@ export default function RootLayout({
 }
 
 export const metadata = {
-      generator: 'v0.dev'
-    };
+  generator: "v0.dev",
+}
