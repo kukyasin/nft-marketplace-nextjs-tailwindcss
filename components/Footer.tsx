@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="text-xl font-bold text-blur-orange tracking-tighter mb-4 block">
-              STREAMLINE
+              NFTLIFY
             </Link>
             <p className="text-blur-gray text-sm mb-4">The ultimate NFT marketplace for creators and collectors.</p>
             <div className="flex gap-4">
@@ -101,7 +101,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800/30 mt-8 pt-8 text-center text-sm text-blur-gray">
-          <p>&copy; {new Date().getFullYear()} STREAMLINE. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} NFTLIFY. All rights reserved.</p>
         </div>
       </div>
     </footer>

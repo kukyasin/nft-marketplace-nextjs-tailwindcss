@@ -20,15 +20,13 @@ export default function Header() {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-8">
               <Link href="/" className="text-2xl font-bold text-blur-orange tracking-tighter">
-                STREAMLINE
+                NFTLIFY
               </Link>
               <nav className="hidden md:flex items-center gap-6">
                 <Link
                   href="/collections"
                   className={`text-sm font-normal transition-colors tracking-wider flex items-center gap-1 ${
-                    isActive("/collections")
-                      ? "text-blur-orange border-b border-blur-orange pb-4"
-                      : "text-gray-300 hover:text-blur-orange"
+                    isActive("/collections") ? "text-blur-orange" : "text-gray-300 hover:text-blur-orange"
                   }`}
                 >
                   <svg
@@ -65,9 +63,7 @@ export default function Header() {
                 <Link
                   href="/trending"
                   className={`text-sm font-normal transition-colors tracking-wider flex items-center gap-1 ${
-                    isActive("/trending")
-                      ? "text-blur-orange border-b border-blur-orange pb-4"
-                      : "text-gray-300 hover:text-blur-orange"
+                    isActive("/trending") ? "text-blur-orange" : "text-gray-300 hover:text-blur-orange"
                   }`}
                 >
                   <svg
@@ -96,9 +92,7 @@ export default function Header() {
                 <Link
                   href="/drops"
                   className={`text-sm font-normal transition-colors tracking-wider flex items-center gap-1 ${
-                    isActive("/drops")
-                      ? "text-blur-orange border-b border-blur-orange pb-4"
-                      : "text-gray-300 hover:text-blur-orange"
+                    isActive("/drops") ? "text-blur-orange" : "text-gray-300 hover:text-blur-orange"
                   }`}
                 >
                   <svg
@@ -121,9 +115,7 @@ export default function Header() {
                 <Link
                   href="/activity"
                   className={`text-sm font-normal transition-colors tracking-wider flex items-center gap-1 ${
-                    isActive("/activity")
-                      ? "text-blur-orange border-b border-blur-orange pb-4"
-                      : "text-gray-300 hover:text-blur-orange"
+                    isActive("/activity") ? "text-blur-orange" : "text-gray-300 hover:text-blur-orange"
                   }`}
                 >
                   <svg

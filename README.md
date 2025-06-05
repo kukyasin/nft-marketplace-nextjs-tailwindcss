@@ -1,4 +1,4 @@
-# NEXUS | NFT Trading Platform
+# NFTLIFY | NFT Trading Platform
 
 *Automatically synced with your [v0.dev](https://v0.dev) deployments*
 
@@ -7,7 +7,7 @@
 
 ## Overview
 
-**NEXUS** is a modern NFT trading platform built with Next.js, featuring a sleek dark interface and comprehensive marketplace functionality. The platform provides users with advanced tools for discovering, trading, and managing NFT collections.
+**NFTLIFY** is a modern NFT trading platform built with Next.js, featuring a sleek dark interface and comprehensive marketplace functionality. The platform provides users with advanced tools for discovering, trading, and managing NFT collections.
 
 ### Key Features
 

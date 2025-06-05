@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>NEXUS | NFT Trading Platform</title>
+        <title>NFTLIFY | NFT Trading Platform</title>
         <meta
           name="description"
           content="Modern NFT trading platform for discovering and trading digital collectibles"
