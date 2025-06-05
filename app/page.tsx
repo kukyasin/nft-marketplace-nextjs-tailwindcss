@@ -7,6 +7,7 @@ import Link from "next/link"
 import { useState } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import NFTThumbnail from "@/components/NFTThumbnail"
 
 // Import JSON data
 import featuredCollectionsData from "@/data/featured-collections.json"
@@ -61,12 +62,13 @@ export default function LandingPage() {
               <div className="lg:col-span-2">
                 <div className="relative bg-gradient-to-br from-gray-900 to-black border border-gray-800/30 rounded-2xl overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                  <Image
+                  <NFTThumbnail
                     src={currentCollection.image || "/placeholder.svg"}
+                    alt={currentCollection.name}
                     width={800}
                     height={400}
-                    alt={currentCollection.name}
-                    className="w-full h-[400px] object-cover"
+                    className="w-full h-[400px]"
+                    priority={true}
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
                     <div className="flex items-center gap-3 mb-4">
@@ -157,12 +159,12 @@ export default function LandingPage() {
                 <div className="grid grid-cols-3 gap-3">
                   {currentCollection.avatars.map((avatar, index) => (
                     <div key={index} className="relative group">
-                      <Image
+                      <NFTThumbnail
                         src={avatar || "/placeholder.svg"}
+                        alt={`${currentCollection.name} #${index + 1}`}
                         width={80}
                         height={80}
-                        alt={`${currentCollection.name} #${index + 1}`}
-                        className="w-full aspect-square object-cover rounded-lg border border-gray-800/30"
+                        className="w-full aspect-square rounded-lg border border-gray-800/30"
                       />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
                         <ExternalLink className="h-4 w-4 text-white" />
@@ -197,12 +199,12 @@ export default function LandingPage() {
                   className="bg-gray-900/30 border border-gray-800/30 rounded-xl overflow-hidden hover:border-blur-orange/30 transition-colors group"
                 >
                   <div className="relative">
-                    <Image
+                    <NFTThumbnail
                       src={collection.image || "/placeholder.svg"}
+                      alt={collection.name}
                       width={400}
                       height={200}
-                      alt={collection.name}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-48"
                     />
                     <div className="absolute top-4 right-4">
                       <Button
@@ -311,12 +313,12 @@ export default function LandingPage() {
                   className="bg-gray-900/30 border border-gray-800/30 rounded-xl overflow-hidden hover:border-blur-orange/30 transition-colors"
                 >
                   <div className="relative">
-                    <Image
+                    <NFTThumbnail
                       src={drop.image || "/placeholder.svg"}
+                      alt={drop.name}
                       width={200}
                       height={200}
-                      alt={drop.name}
-                      className="w-full aspect-square object-cover"
+                      className="w-full aspect-square"
                     />
                     <div className="absolute top-3 left-3">
                       <span

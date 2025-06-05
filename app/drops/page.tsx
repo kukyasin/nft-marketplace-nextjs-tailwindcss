@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/ui/button"
 import { Search, Filter, Clock, ExternalLink } from "lucide-react"
-import Image from "next/image"
 import { useState } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import NFTThumbnail from "@/components/NFTThumbnail"
 
 // Import JSON data
 import dropsData from "@/data/drops.json"
@@ -143,12 +143,13 @@ export default function DropsPage() {
                 >
                   {/* Banner Image */}
                   <div className="relative">
-                    <Image
+                    <NFTThumbnail
                       src={drop.banner || "/placeholder.svg"}
+                      alt={drop.name}
                       width={600}
                       height={200}
-                      alt={drop.name}
-                      className="w-full h-32 object-cover"
+                      className="w-full h-32"
+                      hoverEffect={false}
                     />
                     <div className="absolute top-3 left-3">
                       <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(drop.status)}`}>
@@ -171,12 +172,12 @@ export default function DropsPage() {
                     {/* Header */}
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-16 h-16 bg-gray-800/50 rounded-lg overflow-hidden flex-shrink-0">
-                        <Image
+                        <NFTThumbnail
                           src={drop.image || "/placeholder.svg"}
+                          alt={drop.name}
                           width={64}
                           height={64}
-                          alt={drop.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full rounded-lg"
                         />
                       </div>
                       <div className="flex-1">

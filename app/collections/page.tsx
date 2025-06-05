@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/ui/button"
 import { Search, Filter, Grid, List, TrendingUp, Star } from "lucide-react"
-import Image from "next/image"
 import { useState } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import NFTThumbnail from "@/components/NFTThumbnail"
 
 // Import JSON data
 import featuredCollectionsData from "@/data/featured-collections.json"
@@ -122,12 +122,12 @@ export default function CollectionsPage() {
                     className="bg-gray-900/30 border border-gray-800/30 rounded-xl overflow-hidden hover:border-blur-orange/30 transition-colors group cursor-pointer"
                   >
                     <div className="relative">
-                      <Image
+                      <NFTThumbnail
                         src={collection.image || "/placeholder.svg"}
+                        alt={collection.name}
                         width={300}
                         height={200}
-                        alt={collection.name}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-48"
                       />
                       <div className="absolute top-3 right-3">
                         <Button
@@ -195,12 +195,12 @@ export default function CollectionsPage() {
                                 <span className="text-blur-gray text-sm w-4">{collection.rank}</span>
                               )}
                               <div className="w-12 h-12 bg-gray-900 border border-gray-800/30 rounded-lg overflow-hidden">
-                                <Image
+                                <NFTThumbnail
                                   src={collection.avatar || collection.image || "/placeholder.svg"}
+                                  alt={collection.name}
                                   width={48}
                                   height={48}
-                                  alt={collection.name}
-                                  className="w-full h-full object-cover"
+                                  className="w-full h-full rounded-lg"
                                 />
                               </div>
                               <div>

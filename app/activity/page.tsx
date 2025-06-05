@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button"
 import { ChevronDown, X, Filter, Grid, List, Search } from "lucide-react"
-import Image from "next/image"
 import { useState } from "react"
 import { Checkbox } from "@/components/ui/checkbox"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import NFTThumbnail from "@/components/NFTThumbnail"
 
 // Import JSON data
 import activityData from "@/data/activity.json"
@@ -382,12 +382,12 @@ export default function ActivityPage() {
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-gray-800/50 rounded-lg overflow-hidden">
-                              <Image
+                              <NFTThumbnail
                                 src={activity.item.image || "/placeholder.svg"}
+                                alt={activity.item.name}
                                 width={40}
                                 height={40}
-                                alt={activity.item.name}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full rounded-lg"
                               />
                             </div>
                             <div>
